@@ -1,8 +1,6 @@
 package github.tanishqtrivedi27.authService.request;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @AllArgsConstructor
