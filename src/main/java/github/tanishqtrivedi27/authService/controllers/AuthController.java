@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController("/")
+@RestController
 public class AuthController {
     private final JWTService jwtService;
     private final UserDetailsServiceImpl userDetailsService;
@@ -31,7 +31,7 @@ public class AuthController {
         try {
             Boolean isSignedUp = userDetailsService.signupUser(userInfoDTO);
             if (Boolean.FALSE.equals(isSignedUp)) {
-                return new ResponseEntity<>("User already exists", HttpStatus.BAD_REQUEST);
+                return new ResponseEntity<>("User already exists or validation error", HttpStatus.BAD_REQUEST);
             }
 
             RefreshToken refreshToken = refreshTokenService.generateRefreshToken(userInfoDTO.getUsername());

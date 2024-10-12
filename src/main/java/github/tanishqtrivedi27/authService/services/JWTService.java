@@ -1,13 +1,13 @@
 package github.tanishqtrivedi27.authService.services;
 
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import io.jsonwebtoken.Claims;
 
 import javax.crypto.SecretKey;
-import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,11 +15,11 @@ import java.util.function.Function;
 
 @Service
 public class JWTService {
-    public static final String SECRET = "574893201293847643782901239874";
+    public static final String SECRET = "57489320168950432304956854038900349550293847643782901239874";
     private final SecretKey key;
 
     public JWTService() {
-        this.key = Keys.hmacShaKeyFor(SECRET.getBytes(StandardCharsets.UTF_8));
+        this.key = Keys.hmacShaKeyFor(Decoders.BASE64.decode(SECRET));
     }
 
     public String extractUsername(String token) {

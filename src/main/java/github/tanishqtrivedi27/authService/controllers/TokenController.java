@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController("/")
+@RestController
 public class TokenController {
     private final JWTService jwtService;
     private final RefreshTokenService refreshTokenService;
@@ -42,7 +42,7 @@ public class TokenController {
     }
 
     @PostMapping("auth/v1/refreshToken")
-    public JWTResponseDTO refreshToken(@RequestBody RefreshTokenRequestDTO refreshTokenRequestDTO){
+    public JWTResponseDTO  refreshToken(@RequestBody RefreshTokenRequestDTO refreshTokenRequestDTO){
         return refreshTokenService
                 .findByToken(refreshTokenRequestDTO.getRefreshToken())
                 .map(refreshTokenService::verifyExpiration)

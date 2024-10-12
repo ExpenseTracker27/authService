@@ -1,0 +1,40 @@
+###
+POST http://localhost:3001/auth/v1/signup
+Content-Type: Application/json
+
+{
+  "username": "tanishq",
+  "password": "ubsfbqQ343@",
+  "email": "tanishq@gmail.com"
+}
+
+<> 2024-10-09T232845.400.txt
+<> 2024-10-09T232627.200.json
+<> 2024-10-09T232403.400.txt
+
+###
+POST http://localhost:3001/auth/v1/login
+Content-Type: Application/json
+
+{
+  "username": "tanishq",
+  "password": "ubsfbqQ343@"
+}
+
+<> 2024-10-09T235913.200.json
+<> 2024-10-09T234822.200.json
+<> 2024-10-09T234219.200.json
+<> 2024-10-09T233927.200.json
+<> 2024-10-09T233407.200.json
+
+###
+POST http://localhost:3001/auth/v1/refreshToken
+Content-Type: Application/json
+
+{
+  "refreshToken": "7144f3bb-ea1e-40d5-98b2-2bf0a83a5415"
+}
+
+<> 2024-10-10T000111.200.json
+<> 2024-10-09T235936.200.json
+<> 2024-10-09T235415.401.txt
