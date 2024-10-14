@@ -3,9 +3,12 @@ POST http://localhost:3001/auth/v1/signup
 Content-Type: Application/json
 
 {
-  "username": "tanishq",
-  "password": "ubsfbqQ343@",
-  "email": "tanishq@gmail.com"
+  "username": "tanishq2",
+  "password": "Qwerty123@",
+  "email": "t@gmail.com",
+  "first_name": "tanishq",
+  "last_name": "trivedi",
+  "phone_number":5432456543
 }
 
 <> 2024-10-09T232845.400.txt

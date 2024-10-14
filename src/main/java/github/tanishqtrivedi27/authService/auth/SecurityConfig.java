@@ -1,5 +1,6 @@
 package github.tanishqtrivedi27.authService.auth;
 
+import github.tanishqtrivedi27.authService.eventProducer.UserInfoProducer;
 import github.tanishqtrivedi27.authService.repositories.UserRepository;
 import github.tanishqtrivedi27.authService.services.UserDetailsServiceImpl;
 import lombok.Data;
@@ -27,17 +28,19 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig {
     private final PasswordEncoder passwordEncoder;
     private final UserDetailsService userDetailsService;
+    private final UserInfoProducer userInfoProducer;
 
     @Autowired
-    public SecurityConfig(PasswordEncoder passwordEncoder, UserDetailsService userDetailsService) {
+    public SecurityConfig(PasswordEncoder passwordEncoder, UserDetailsService userDetailsService, UserInfoProducer userInfoProducer) {
         this.passwordEncoder = passwordEncoder;
         this.userDetailsService = userDetailsService;
+        this.userInfoProducer = userInfoProducer;
     }
 
     @Bean
     @Autowired
-    public UserDetailsService userDetailsService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
-        return new UserDetailsServiceImpl(userRepository, passwordEncoder);
+    public UserDetailsService userDetailsService(UserRepository userRepository, PasswordEncoder passwordEncoder, UserInfoProducer userInfoProducer) {
+        return new UserDetailsServiceImpl(userRepository, passwordEncoder, userInfoProducer);
     }
 
     @Bean

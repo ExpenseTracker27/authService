@@ -1,6 +1,7 @@
 package github.tanishqtrivedi27.authService.services;
 
 import github.tanishqtrivedi27.authService.entities.UserInfo;
+import github.tanishqtrivedi27.authService.eventProducer.UserInfoProducer;
 import github.tanishqtrivedi27.authService.models.UserInfoDTO;
 import github.tanishqtrivedi27.authService.repositories.UserRepository;
 import github.tanishqtrivedi27.authService.utils.ValidationUtil;
@@ -22,11 +23,13 @@ import java.util.UUID;
 public class UserDetailsServiceImpl implements UserDetailsService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final UserInfoProducer userInfoProducer;
 
     @Autowired
-    public UserDetailsServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public UserDetailsServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder, UserInfoProducer userInfoProducer) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+        this.userInfoProducer = userInfoProducer;
     }
 
     @Override
@@ -54,7 +57,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         }
 
         String userId = UUID.randomUUID().toString();
+        userInfoDTO.setUserId(userId);
         userRepository.save(new UserInfo(userId, userInfoDTO.getUsername(), userInfoDTO.getPassword(), new HashSet<>()));
+        userInfoProducer.sendEventToKafka(userInfoDTO);
+
         return true;
     }
 }

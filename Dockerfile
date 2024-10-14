@@ -1,4 +1,2 @@
-FROM ubuntu:latest
-LABEL authors="tanishq"
-
-ENTRYPOINT ["top", "-b"]
+FROM openjdk:21-jre-slim
+WORKDIR /app
