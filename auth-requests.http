@@ -1,4 +1,4 @@
-###
+### Signup
 POST http://localhost:3001/auth/v1/signup
 Content-Type: Application/json
 
@@ -15,7 +15,7 @@ Content-Type: Application/json
 <> 2024-10-09T232627.200.json
 <> 2024-10-09T232403.400.txt
 
-###
+### Login - gives both access and refreshToken
 POST http://localhost:3001/auth/v1/login
 Content-Type: Application/json
 
@@ -30,7 +30,7 @@ Content-Type: Application/json
 <> 2024-10-09T233927.200.json
 <> 2024-10-09T233407.200.json
 
-###
+### Access token only
 POST http://localhost:3001/auth/v1/refreshToken
 Content-Type: Application/json
 
