@@ -46,6 +46,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         return userRepository.findByUsername(userInfoDTO.getUsername());
     }
 
+    public String getUserIdByUsername(String username) {
+        return userRepository.findByUsername(username).getUserId();
+    }
+
     public Boolean signupUser(UserInfoDTO userInfoDTO) {
         if (!ValidationUtil.validateEmail(userInfoDTO.getEmail()) || !ValidationUtil.validatePassword(userInfoDTO.getPassword())) {
             return false;

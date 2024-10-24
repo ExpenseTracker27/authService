@@ -9,6 +9,9 @@ import github.tanishqtrivedi27.authService.services.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -40,5 +43,16 @@ public class AuthController {
         } catch (Exception e) {
             return new ResponseEntity<>("Exception in user service",HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    @GetMapping("auth/v1/ping")
+    public ResponseEntity<?> ping() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.isAuthenticated()) {
+            String userId = userDetailsService.getUserIdByUsername(authentication.getName());
+            return ResponseEntity.ok(userId);
+        }
+
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("unauthorized");
     }
 }

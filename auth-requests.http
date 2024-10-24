@@ -3,11 +3,11 @@ POST http://localhost:3001/auth/v1/signup
 Content-Type: Application/json
 
 {
-  "username": "tanishq2",
-  "password": "Qwerty123@",
-  "email": "t@gmail.com",
+  "username": "tanishq1",
   "first_name": "tanishq",
   "last_name": "trivedi",
+  "password": "Qwerty123@",
+  "email": "t@gmail.com",
   "phone_number":5432456543
 }
 
@@ -20,8 +20,8 @@ POST http://localhost:3001/auth/v1/login
 Content-Type: Application/json
 
 {
-  "username": "tanishq",
-  "password": "ubsfbqQ343@"
+  "username": "tanishq1",
+  "password": "Qwerty123@"
 }
 
 <> 2024-10-09T235913.200.json
@@ -35,7 +35,7 @@ POST http://localhost:3001/auth/v1/refreshToken
 Content-Type: Application/json
 
 {
-  "refreshToken": "7144f3bb-ea1e-40d5-98b2-2bf0a83a5415"
+  "refreshToken": "f3549f87-ccdf-4d48-a002-36245e63c021"
 }
 
 <> 2024-10-10T000111.200.json
