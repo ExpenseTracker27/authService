@@ -3,7 +3,7 @@ POST http://localhost:3001/auth/v1/signup
 Content-Type: Application/json
 
 {
-  "username": "tanishq1",
+  "username": "tanishq3",
   "first_name": "tanishq",
   "last_name": "trivedi",
   "password": "Qwerty123@",
